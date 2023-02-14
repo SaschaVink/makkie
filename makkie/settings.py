@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-es6s#s&yf=y4434ts4!x=-p+2_n_ktw#mi!0-c*i5--=edmxw*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["app-makkie.herokuapp.com"]
 
 
 # Application definition
