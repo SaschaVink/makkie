@@ -1,0 +1,79 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+
+<!-- add bootstrap to it when filter is working -->
+
+<h2>Company Overview Page</h2>
+
+<a href="{% url 'home' %}" class="btn btn-secondary">Back Homepage</a>
+<br>
+<br>
+
+<!-- "input-group class can be added -->
+
+<form class="" method="get">{{projectfilter.form}} <button class="btn btn-secondary" type="submit">Submit</button></form>
+<br>
+
+
+
+
+<!-- this was the old way before I changed it to projectfilter.qs  for upload_activity in upload_activity  -->
+
+<div class="container-fluid">
+      <div class="row">
+{% for upload_activity in projectfilter.qs %}
+
+            <div class="col-6 list-group">
+                  <ul>
+                        <li class="list-group-item">Name: {{upload_activity.name}}</li>
+                        <li class="list-group-item">Project: {{upload_activity.project_name}}</li>
+                        <li class="list-group-item">Employee: {{upload_activity.employee_name}}</li>
+                        <li class="list-group-item">Hours: {{upload_activity.hours_worked}}</li>
+                        <li class="list-group-item">Activities: {{upload_activity.activities_performed}}</li>
+                        <li class="list-group-item">Date Activities: {{upload_activity.date}}</li>
+                        <li class="list-group-item">Date Record Created: {{upload_activity.date_created_system}}</li>
+                        <li class="list-group-item">Date Created in System: {{upload_activity.date_created_system}}</li>
+                  </ul>
+            </div>
+            
+            <div class="col-6 list-group">
+                  <ul class="">
+                        {% if upload_activity.image_1 %}
+                              <li class="list-group-item"><img src="{{ upload_activity.image_1.url }}" class="img-fluid"></li>
+                              <li class="list-group-item">Commend Image 1: {{upload_activity.image_1_comments}}</li>
+                        {% else %}
+                        {% endif %}
+
+                        {% if upload_activity.image_2 %}
+                              <li class="list-group-item"><img src="{{ upload_activity.image_2.url }}" class="img-fluid"></li>
+                              <li class="list-group-item">Commend Image 2: {{upload_activity.image_2_comments}}</li>
+                        {% else %}
+                        {% endif %}
+            
+                        {% if upload_activity.image_3 %}
+                              <li class="list-group-item"><img src="{{ upload_activity.image_3.url }}" class="img-fluid"></li>
+                              <li class="list-group-item">Commend Image 3: {{UploadActivity.image_3_comments}}</li>
+                        {% else %}
+                        {% endif %}
+
+                        {% if upload_activity.image_4 %}
+                              <li class="list-group-item"><img src="{{ upload_activity.image_4.url }}" class="img-fluid"></li>
+                              <li class="list-group-item">Commend Image 4: {{upload_activity.image_4_comments}}</li>
+                        {% else %}   
+                        {% endif %}
+                  </ul>
+            </div>
+{% endfor %}
+     </div>
+</div>
+<!-- why a second endfor review this at some point, if I remove one of the image loops it removes one display dublicate from the overview tab, why is this and why isn't it occuring with the other examples that were already in the system + why isnt the upload function working properly -->
+{% endblock %}
+
+
+
+
+

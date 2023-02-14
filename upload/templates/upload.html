@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+<div class="container-fluid mt-3">
+
+
+<h2>Upload Page</h2>
+
+
+<a href="{% url 'home' %}" class="btn btn-secondary">Back Homepage</a>
+<br>
+<br>
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="row justify-content-center">
+      <div class="col-sm-10 col-md-6">
+            Name: {{ form_upload_activity.name|add_class:"form-control"}}
+
+            Project: {{ form_upload_activity.project_name|add_class:"form-control"}}
+            Employee: {{ form_upload_activity.employee_name|add_class:"form-control"}}
+            Hours: {{ form_upload_activity.hours_worked|add_class:"form-control"}}
+            Activities: {{ form_upload_activity.activities_performed|add_class:"form-control"}}
+            Date Activities: {{ form_upload_activity.date|add_class:"form-control"}}
+            Image 1: {{ form_upload_activity.image_1|add_class:"form-control"}}
+            Image 1 Commend: {{ form_upload_activity.image_1_comments|add_class:"form-control"}}
+            Image 2: {{ form_upload_activity.image_2|add_class:"form-control"}}
+            Image 2 Comment: {{ form_upload_activity.image_2_comments|add_class:"form-control"}}
+            Image 3: {{ form_upload_activity.image_3|add_class:"form-control"}}
+            Image 3 Comment: {{ form_upload_activity.image_3_comments|add_class:"form-control"}}
+            Image 4: {{ form_upload_activity.image_4|add_class:"form-control"}}
+            Image 4 comment: {{ form_upload_activity.image_4_comments|add_class:"form-control"}}
+        <hr class="mb-3">
+        <button class="btn btn-primary btn-lg bt-block" type="submit">Submit</button>
+      </div>
+    </div>
+</form>
+</div>
+{% endblock %}
+

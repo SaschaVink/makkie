@@ -1,0 +1,36 @@
+<!-- At some point add class active to nav link and more important add aria-current="page"  +  in navbar  I removed bg-light class might be usefull in future 
+-->
+{% load static %}
+
+<nav class="navbar navbar-expand navbar-dark" style="background-color: #404EED;"
+> 
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">{% load static %}<img src="{% static '/images/makkie_logo.svg/' %}" alt="Logo" width="125" height="24" class="d-inline-block align-text-top"> </a>
+  
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'upload' %}">Upload Activity</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'uploadoverview' %}">Activity Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'overview' %}">Company Overview</a>
+    </li>
+    
+    {% if request.user.is_authenticated %}
+   	<li class="nav-item">
+      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

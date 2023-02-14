@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+
+<h2>Home Screen</h2>
+
+  <h5 class="mt-2">Welcome to Makkie - <small class="text-muted">"The easy way to keep track of your poject hours"</small></h5>
+
+<br>
+
+<h6>This section is for employees/zzp (regular login required))</h6>
+
+	<a href="{% url 'upload' %}" class="btn btn-primary"><i class="bi bi-cloud-upload"></i>
+ Upload Activity</a>
+
+
+	<a href="{% url 'uploadoverview' %}" class="btn btn-primary"><i class="bi bi-binoculars"></i> Activity Overview</a>
+
+<br><br><br><br>
+
+<h6>This section is for company owners or company project managers (super admin user login required hidden from other user types)</h6>
+
+	<a href="{% url 'overview' %}" class="btn btn-primary"><i class="bi bi-binoculars"></i> Company Overview</a>
+
+</div>
+
+
+
+{% endblock %}

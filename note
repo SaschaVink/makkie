@@ -1,0 +1,72 @@
+[19:07, 22-11-2022] +31 6 11765701: Ik zou sowieso een kleur pakken: makkie is handigheid en luchtigheid. Dan zou ik geen zwart/grijs/donkerblauw pakken
+[19:07, 22-11-2022] +31 6 11765701: Wit is te clean en zakelijk
+[19:08, 22-11-2022] +31 6 11765701: Ogen trekken het meest naar de rode /paarse stijlen
+
+#404EED color logo 
+
+#5865F2
+
+Example images (nice vibe)
+https://indebuurt.nl/apeldoorn/bedrijvigheid/werken/5-x-hierom-wil-je-aan-de-slag-in-de-bouw~189580/
+
+
+
+code to add class under meta 
+
+		def __init__(self, *args, **kwargs):
+			super().__init__(*args, **kwargs)
+			self.fields["project_name"].widget.attrs.update(
+				{"class": "form-control"})
+
+				
+
+--
+
+attrs={'class': 'form-control'})
+
+-- remove later this is old code of the overview page to play around with layoutß
+
+<!-- this was the old way before I changed it to projectfilter.qs  for upload_activity in upload_activity  -->
+
+{% for upload_activity in projectfilter.qs %}
+<div>
+
+      <ul>
+            <li>Project: {{upload_activity.project_name}}</li>
+            <li>Employee: {{upload_activity.employee_name}}</li>
+            <li>Hours: {{upload_activity.hours_worked}}</li>
+            <li>Activities: {{upload_activity.activities_performed}}</li>
+            <li>Date Activities: {{upload_activity.date}}</li>
+            <li>Date Record Created: {{upload_activity.date_created_system}}</li>
+            <li>Date Created in System: {{upload_activity.date_created_system}}</li>
+      </ul>
+            <br>
+      <ul class="list-group">
+            {% if upload_activity.image_1 %}
+                  <li class="list-group-item"><img src="{{ upload_activity.image_1.url }}" height="300"> 
+                  <li class="list-group-item">Commend Image 1: {{upload_activity.image_1_comments}}</li>
+            {% else %}
+            {% endif %}
+
+            {% if upload_activity.image_2 %}
+                  <li class="list-group-item"><img src="{{ upload_activity.image_2.url }}" height="300"> 
+                  <li class="list-group-item">Commend Image 2: {{upload_activity.image_2_comments}}</li>
+            {% else %}
+            {% endif %}
+
+            {% if upload_activity.image_3 %}
+                  <li class="list-group-item"><img src="{{ upload_activity.image_3.url }}" height="300"> 
+                  <li class="list-group-item">Commend Image 3: {{UploadActivity.image_3_comments}}</li>
+            {% else %}
+            {% endif %}
+
+            {% if upload_activity.image_4 %}
+                  <li class="list-group-item"><img src="{{ upload_activity.image_4.url }}" height="300"> 
+                  <li class="list-group-item">Commend Image 4: {{upload_activity.image_4_comments}}</li>
+            {% else %}   
+            {% endif %}
+      </ul>
+</div>
+{% endfor %}
+<!-- why a second endfor review this at some point, if I remove one of the image loops it removes one display dublicate from the overview tab, why is this and why isn't it occuring with the other examples that were already in the system + why isnt the upload function working properly -->
+{% endblock %}

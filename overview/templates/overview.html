@@ -1,0 +1,115 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container-fluid mt-3">
+
+<!-- add bootstrap to it when filter is working -->
+
+<h2>Company Overview Page</h2>
+
+<a href="{% url 'home' %}" class="btn btn-secondary">Back Homepage</a>
+<br>
+<br>
+
+<!-- "input-group class can be added -->
+
+<form class="form-group" method="get">{{projectfilter.form}} <button class="btn btn-secondary" type="submit">Submit</button></form>
+<br>
+
+
+<!-- this was the old way before I changed it to projectfilter.qs  for upload_activity in upload_activity  -->
+
+<div class="container-fluid">
+      <div class="row">
+            <div class ="col-lg-12">
+                  <div class="card card-body">
+                        <table class="table table-lg">
+                              <tr>ss
+                                    <th><i class="bi bi-file-earmark-person-fill"></i></th>
+                                    <th><i class="bi bi-houses"></i></th>
+                                    <th><i class="bi bi-clock"></i></th>
+                                    <th></i><i class="bi bi-bricks"></i> <i class="bi bi-hammer"></i></th>
+                                    <th><i class="bi bi-calendar-event"> <i class="bi bi-hammer"></i></th>
+                                    <th><i class="bi bi-calendar-event"></i> <i class="bi bi-database-up"></i></th>
+                                    <th><i class="bi bi-images"></i></th>
+                                    <th><i class="bi bi-images"></i></th>
+                                    <th><i class="bi bi-images"></i></th>
+                                    <th><i class="bi bi-images"></i></th>
+                              </tr>
+                           <!-- Could change date created in system to record last updated with potentially a date record created-->
+{% for upload_activity in projectfilter.qs %}
+                              <tr>
+                                    <td>{{upload_activity.name}}</td>
+                                    <td>{{upload_activity.project_name}}</td>
+                                    <td>{{upload_activity.hours_worked}}</td>
+                                    <td>{{upload_activity.activities_performed}}</td>
+                                    <td>{{upload_activity.date}}</td>
+                                    <td>{{upload_activity.date_created_system}}</td>
+                                    <td>{% if upload_activity.image_1 %}
+                                          <div class="">
+                                                <div><img src="{{ upload_activity.image_1.url }}" class="img-fluid"></div>
+                                                <div><span>{{upload_activity.image_1_comments}}</span></div>
+                                          </div></td>
+                                    {% else %}
+                                    {% endif %}
+
+                                    <td>{% if upload_activity.image_2 %}
+                                          <div class="">
+                                                <div><img src="{{ upload_activity.image_2.url }}" class="img-fluid"></div>
+                                                <div><span>{{upload_activity.image_2_comments}}</span></div>
+                                          </div></td>
+                                    {% else %}
+                                    {% endif %}
+                        
+                                    <td>{% if upload_activity.image_3 %}
+                                          <div class="">
+                                                <div><img src="{{ upload_activity.image_3.url }}" class="img-fluid"></div>
+                                                <div><span>{{upload_activity.image_3_comments}}</span></div>
+                                          </div></td>
+                                    {% else %}
+                                    {% endif %}
+            
+                                    <td>{% if upload_activity.image_4 %}
+                                          <div class="">
+                                                <div><img src="{{ upload_activity.image_4.url }}" class="img-fluid"></div>
+                                                <div><span>{{upload_activity.image_4_comments}}</span></div>
+                                          </div></td>
+                                    {% else %}
+                                    {% endif %}
+                                    </td>
+                              <tr>
+                        {% endfor %}
+                        </table>
+                  </div>
+            </div>
+      </div>
+</div>
+
+<br>
+
+<div class="row">
+      <div class="col-12">
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th>Text</th>
+                      <th>Images</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae massa quam. Quisque eget orci egestas, molestie sem et, porta magna. Morbi rutrum, ipsum ut faucibus aliquet, velit augue pharetra velit, vel consectetur eros velit et lacus.</td>
+                      <td><img src="img1.jpg" class="img-fluid m-1" alt="Image 1"/><img src="
+
+
+{% endblock %}
+
+            
+         
+
+
+
+
+
