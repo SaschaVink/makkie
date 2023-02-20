@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic', #whitenoice enablement locally
     'django.contrib.staticfiles',
     'upload.apps.UploadConfig',
     'home.apps.HomeConfig',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-   # 'whitenoise.runserver_nostatic',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,8 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 #The absolute path to the directory where collectstatic will collect static files for deployment.
 
-STATIC_URL = 'collectstatic/'
+STATIC_URL = 'staticfiles/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
+#Forever-cacheable files and compression
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 #Project static assets that aren’t tied to a particular app the staticfiled_dirs
