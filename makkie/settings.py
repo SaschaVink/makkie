@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-es6s#s&yf=y4434ts4!x=-p+2_n_ktw#mi!0-c*i5--=edmxw*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["app-makkie.herokuapp.com"]
+ALLOWED_HOSTS = ["app-makkie.herokuapp.com", "localhost"]
 
 
 # Application definition
@@ -45,7 +45,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+   # 'whitenoise.runserver_nostatic',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
